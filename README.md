@@ -7,5 +7,5 @@ I used to use Bootstrap grid responsive, but I see that have something very unco
 
 The classes blocks are similar just that with a CSS file lighter and a  file SASS easier of modify ;)
 
-#contributors
+#Contributors
 <a href="http://facebook.com/hendrymartinezcastillo" target="_blank">@hendrymartinez</a>
