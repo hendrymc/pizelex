@@ -1,0 +1,77 @@
+@import 'reset';
+
+//Screen width
+$break-small: 768px;
+$break-medium: 992px;
+$break-large: 1200px;
+
+//Creating blocks
+@mixin blocks($type){
+    $i: 12;
+    $block-width: 100% / $i;
+    @for $i from 1 through $i {
+        .block-#{$type}-#{$i} {
+            width: $block-width * $i;
+        }
+    }
+}
+
+//Creating screens
+@mixin screen($media) {
+    @if $media == small {
+        $type: sm;
+        @media only screen and (min-width: $break-small) {
+            .container {
+                width: $break-small - 18;
+            }
+            @include blocks($type);
+        }
+    }
+    @elseif $media == medium {
+        $type: md;
+        @media only screen and (min-width: $break-medium) {
+            .container {
+                width: $break-medium - 22;
+            }
+            @include blocks($type);
+        }
+    }
+    @elseif $media == large {
+        $type: lg;
+        @media only screen and (min-width: $break-large) {
+            .container {
+                width: $break-large - 30;
+            }
+            @include blocks($type);
+        }
+    }
+}
+
+//Screen to full-screen
+@mixin full(){
+    $type: xs;
+    @include blocks($type);
+}
+
+//General properties
+.container {
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+[class^="block-"] {
+    float: left;
+    padding-right: 15px;
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+.fill [class^="block"] {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+//Instantiating mixins
+@include full();
+@include screen(small);
+@include screen(medium);
+@include screen(large);
